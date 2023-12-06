@@ -16,10 +16,17 @@ int execute(char **commd, char **argv)
 	ch = fork();
 	if (ch == 0)
 	{
-		if (execve(commd[0], commd, envr) == -1)
+		if (execve(commd[0], commd, environ) == -1)
 		{
 			perror(argv[0]);
+			freearray(commd);
+			exit(0);
 		}
+	}
+	else
+	{
+		waitpid(ch, &stat, 0);
 		freearray(commd);
 	}
+	return (WEXITSTATUS(stat));
 }

@@ -12,7 +12,7 @@ int main(int ac, char **argv)
 	char *line = NULL;
 	char **commd = NULL;
 
-	int stat = 0, i;
+	int stat = 0;
 	(void) ac;
 	(void) argv;
 
@@ -28,11 +28,7 @@ int main(int ac, char **argv)
 		commd = _tokenizer(line);
 		if (!commd)
 			continue;
-		for (i = 0; commd[i]; i++)
-		{
-			printf("%s\n", commd[i]);
-			free(commd[i]), commd[i] = NULL;
-		}
-		free(commd), commd = NULL;
+
+		stat = execute(commd, argv);
 	}
 }
