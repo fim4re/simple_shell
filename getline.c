@@ -1,5 +1,9 @@
 #include "shell.h"
-
+/**
+ * read__line - read the line
+ *
+ * Return: the line
+*/
 
 char *read__line(void)
 {

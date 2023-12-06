@@ -14,13 +14,17 @@
 
 #define DELIM " \t\n"
 
+extern char ** envr;
+
 char *read__line(void);
 char **_tokenizer(char *line);
+void freearray(char **array);
 
 char *stringdup(const char *s);
-int stringcmp(char *s1, char *s2);
-int stringlen(char *s);
+int stringcmp(char *str1, char *str2);
+int stringlen(char *str);
 char *stringcat(char *dst, char *src);
 char *stringcpy(char *dst, char *src);
+int execute(char **commd, char ** argv);
 
 #endif
