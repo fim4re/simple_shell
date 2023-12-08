@@ -26,5 +26,7 @@ int stringlen(char *str);
 char *stringcat(char *dst, char *src);
 char *stringcpy(char *dst, char *src);
 int execute(char **commd, char ** argv);
+char *get_env(char *var);
+char *get_path(char *commd);
 
 #endif
