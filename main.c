@@ -12,7 +12,7 @@ int main(int ac, char **argv)
 	char *line = NULL;
 	char **commd = NULL;
 
-	int stat = 0;
+	int stat = 0, ind = 0;
 	(void) ac;
 	(void) argv;
 
@@ -25,10 +25,12 @@ int main(int ac, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (stat);
 		}
+		ind++;
+
 		commd = _tokenizer(line);
 		if (!commd)
 			continue;
 
-		stat = execute(commd, argv);
+		stat = execute(commd, argv, ind);
 	}
 }

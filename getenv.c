@@ -11,7 +11,7 @@ char *get_env(char *var)
 	char *td, *key, *val, *ev;
 	int j;
 
-	for (j = 0, environ[j]; j++)
+	for (j = 0; environ[j]; j++)
 	{
 		td = stringdup(environ[j]);
 		key = strtok(td, "=");

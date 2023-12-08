@@ -18,8 +18,8 @@ char *get_path(char *commd)
 		{
 			if (stat(commd, &s) == 0)
 				return (stringdup(commd));
-			else
-				return (NULL);
+
+			return (NULL);
 		}
 	}
 
@@ -42,9 +42,22 @@ char *get_path(char *commd)
 				return (f_commd);
 			}
 			free(f_commd), f_commd = NULL;
+
 			d = strtok(NULL, ":");
 		}
 	}
+	free(d);
 	free(p_env);
 	return (NULL);
+}
+
+int main(int ac, char **av)
+{
+	char *f_commd;
+
+	f_commd = get_path(av[1]);
+	if (f_commd)
+		printf("%s\n", f_commd);
+	else
+		printf("does not exist\n");
 }
