@@ -16,6 +16,11 @@
 
 extern char **environ;
 
+int _builtin(char *commd);
+void h_builtin(char **commd, char **argv, int *stat, int ind);
+void _env(char **commd, int *stat);
+void sh_exit(char **commd, int *stat);
+
 char *read__line(void);
 char **_tokenizer(char *line);
 void freearray(char **array);

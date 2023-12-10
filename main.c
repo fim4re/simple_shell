@@ -30,6 +30,9 @@ int main(int ac, char **argv)
 		if (!commd)
 			continue;
 
-		stat = execute(commd, argv, ind);
+		if (_builtin(commd[0]))
+			h_builtin(commd, argv, &stat, ind);
+		else
+			stat = execute(commd, argv, ind);
 	}
 }
