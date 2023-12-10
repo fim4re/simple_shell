@@ -60,7 +60,7 @@ int stringcmp(char *str1, char *str2)
 
 int stringlen(char *str)
 {
-	int length;
+	int length = 0;
 
 	while (str[length])
 		length++;

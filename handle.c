@@ -9,7 +9,8 @@
 char *get_path(char *commd)
 {
 	int j;
-	char *p_env, *f_commd, *d;
+	char *p_env, *f_commd, *dr;
+	char *ev = get_env("PATH");
 	struct stat s;
 
 	for (j = 0; commd[j]; j++)
@@ -23,17 +24,17 @@ char *get_path(char *commd)
 		}
 	}
 
-	p_env = get_env("PATH");
+	p_env = ev;
 	if (!p_env)
 		return (NULL);
 
-	d = strtok(p_env, ":");
-	while (d)
+	dr = strtok(p_env, ":");
+	while (dr)
 	{
-		f_commd = malloc(stringlen(d) + stringlen(commd) + 2);
+		f_commd = (char*)malloc(stringlen(dr) + stringlen(commd) + 2);
 		if (f_commd)
 		{
-			stringcpy(f_commd, d);
+			stringcpy(f_commd, dr);
 			stringcat(f_commd, "/");
 			stringcat(f_commd, commd);
 			if (stat(f_commd, &s) == 0)
@@ -43,21 +44,9 @@ char *get_path(char *commd)
 			}
 			free(f_commd), f_commd = NULL;
 
-			d = strtok(NULL, ":");
+			dr = strtok(NULL, ":");
 		}
 	}
-	free(d);
 	free(p_env);
 	return (NULL);
-}
-
-int main(int ac, char **av)
-{
-	char *f_commd;
-
-	f_commd = get_path(av[1]);
-	if (f_commd)
-		printf("%s\n", f_commd);
-	else
-		printf("does not exist\n");
 }
