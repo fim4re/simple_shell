@@ -14,7 +14,6 @@ int main(int ac, char **argv)
 
 	int stat = 0, ind = 0;
 	(void) ac;
-	(void) argv;
 
 	while (1)
 	{

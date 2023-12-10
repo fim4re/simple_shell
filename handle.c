@@ -10,7 +10,6 @@ char *get_path(char *commd)
 {
 	int j;
 	char *p_env, *f_commd, *dr;
-	char *ev = get_env("PATH");
 	struct stat s;
 
 	for (j = 0; commd[j]; j++)
@@ -24,14 +23,14 @@ char *get_path(char *commd)
 		}
 	}
 
-	p_env = ev;
+	p_env = get_env("PATH");
 	if (!p_env)
 		return (NULL);
 
 	dr = strtok(p_env, ":");
 	while (dr)
 	{
-		f_commd = (char*)malloc(stringlen(dr) + stringlen(commd) + 2);
+		f_commd = malloc(stringlen(dr) + stringlen(commd) + 2);
 		if (f_commd)
 		{
 			stringcpy(f_commd, dr);
