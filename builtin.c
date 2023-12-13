@@ -1,6 +1,11 @@
 #include "shell.h"
 
-/***/
+/**
+ * _builtin - print builtin coommand
+ * @commd: command line
+ *
+ * Return: 1 if command in, or 0
+*/
 
 int _builtin(char *commd)
 {
@@ -14,6 +19,15 @@ int _builtin(char *commd)
 	}
 	return (0);
 }
+/**
+ * h_builtin - handle commande
+ * @commd: commande
+ * @argv: argument victor
+ * @stat: last status
+ * @ind: index
+ *
+ * Return: handle command
+*/
 void h_builtin(char **commd, char **argv, int *stat, int ind)
 {
 	(void) argv;
@@ -25,6 +39,13 @@ void h_builtin(char **commd, char **argv, int *stat, int ind)
 	else if (stringcmp(commd[0], "exit") == 0)
 		sh_exit(commd, stat);
 }
+/**
+ * _env - fonction env
+ * @commd: commande line
+ * @stat: status
+ *
+ * Return: env commande
+*/
 void _env(char **commd, int *stat)
 {
 	int j;
@@ -37,7 +58,13 @@ void _env(char **commd, int *stat)
 	freearray(commd);
 	(*stat) = 0;
 }
-
+/**
+ * sh_exit - fonction to exit
+ * @commd: commande
+ * @stat: status
+ *
+ * Return: exit
+*/
 void sh_exit(char **commd, int *stat)
 {
 	freearray(commd);
