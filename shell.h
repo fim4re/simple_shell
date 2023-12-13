@@ -30,7 +30,7 @@ int stringcmp(char *str1, char *str2);
 int stringlen(char *str);
 char *stringcat(char *dst, char *src);
 char *stringcpy(char *dst, char *src);
-int execute(char **commd, char ** argv, int ind);
+int execute(char **commd, char **argv, int ind);
 char *get_env(char *var);
 char *get_path(char *commd);
 char *intoa(int c);
